@@ -11,7 +11,7 @@ def ip_range_search(start, end, search):
 			current_ip = inet_ntop(AF_INET, pack('!I', ip))
 
 			if current_ip == search_ip:
-				found = True
+				found = current_ip
 	except error:
 		print('Invalid IP Address!')
 
@@ -24,8 +24,10 @@ domain   = raw_input('Please Enter The Domain Name: ')
 
 print('Please wait, finding domain in IP address... (This may take a while)')
 
-if ip_range_search(start_ip, end_ip, domain):
-	print('IP in given range!')
+result = ip_range_search(start_ip, end_ip, domain)
+
+if result:
+	print('IP in given range! Found on IP: ' + result)
 else:
 	print('IP not in given range')
 
